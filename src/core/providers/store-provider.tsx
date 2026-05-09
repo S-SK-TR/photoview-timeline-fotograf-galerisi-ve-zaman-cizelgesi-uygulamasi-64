@@ -2,30 +2,57 @@ import { createContext, useContext } from 'react'
 import { createStore, useStore as useZustandStore } from 'zustand'
 import { immer } from 'zustand/middleware/immer'
 
+interface Photo {
+  id: string
+  url: string
+  title: string
+  date: string
+  tags: string[]
+}
+
+interface TimelineEvent {
+  id: string
+  title: string
+  description: string
+  date: string
+  photos: Photo[]
+  tags: string[]
+}
+
 interface StoreState {
   auth: {
-    user: null | any
+    user: null | { name: string; email: string; avatar?: string }
     isAuthenticated: boolean
   }
   gallery: {
-    photos: any[]
-    selectedPhotos: any[]
+    photos: Photo[]
+    selectedPhotos: string[]
     loading: boolean
   }
   timeline: {
-    events: any[]
-    currentDate: Date
+    events: TimelineEvent[]
+    currentDate: string
   }
   tags: {
-    allTags: any[]
-    selectedTags: any[]
+    allTags: string[]
+    selectedTags: string[]
   }
   ui: {
     theme: 'dark' | 'light'
     sidebarOpen: boolean
     modalOpen: boolean
+    activeRoute: string
   }
 }
+
+interface StoreActions {
+  setUi: (updater: (state: StoreState) => void) => void
+  setGallery: (updater: (state: StoreState) => void) => void
+  setAuth: (updater: (state: StoreState) => void) => void
+  setTimeline: (updater: (state: StoreState) => void) => void
+}
+
+type Store = StoreState & StoreActions
 
 const defaultState: StoreState = {
   auth: {
@@ -39,7 +66,7 @@ const defaultState: StoreState = {
   },
   timeline: {
     events: [],
-    currentDate: new Date()
+    currentDate: new Date().toISOString()
   },
   tags: {
     allTags: [],
@@ -48,20 +75,29 @@ const defaultState: StoreState = {
   ui: {
     theme: 'dark',
     sidebarOpen: true,
-    modalOpen: false
+    modalOpen: false,
+    activeRoute: '/gallery'
   }
 }
 
-const store = createStore(immer(() => defaultState))
+const store = createStore(
+  immer<Store>((set) => ({
+    ...defaultState,
+    setUi: (updater) => set(updater),
+    setGallery: (updater) => set(updater),
+    setAuth: (updater) => set(updater),
+    setTimeline: (updater) => set(updater),
+  }))
+)
 
 interface StoreProviderProps {
   children: React.ReactNode
 }
 
+export const StoreContext = createContext(store)
+
 export function StoreProvider({ children }: StoreProviderProps) {
   return <StoreContext.Provider value={store}>{children}</StoreContext.Provider>
 }
-
-export const StoreContext = createContext(store)
 
 export const useStore = () => useZustandStore(StoreContext)
