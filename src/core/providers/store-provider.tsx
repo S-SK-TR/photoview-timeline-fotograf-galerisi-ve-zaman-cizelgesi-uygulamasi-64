@@ -27,6 +27,7 @@ interface StoreState {
   gallery: {
     photos: Photo[]
     selectedPhotos: string[]
+    searchQuery: string
     loading: boolean
   }
   timeline: {
@@ -40,6 +41,8 @@ interface StoreState {
   ui: {
     theme: 'dark' | 'light'
     sidebarOpen: boolean
+    uploadModalOpen: boolean
+    lightboxPhoto: Photo | null
     modalOpen: boolean
     activeRoute: string
   }
@@ -50,6 +53,11 @@ interface StoreActions {
   setGallery: (updater: (state: StoreState) => void) => void
   setAuth: (updater: (state: StoreState) => void) => void
   setTimeline: (updater: (state: StoreState) => void) => void
+  addPhoto: (photo: Photo) => void
+  removePhoto: (photoId: string) => void
+  setSearchQuery: (query: string) => void
+  togglePhotoSelection: (photoId: string) => void
+  resetStore: () => void
 }
 
 type Store = StoreState & StoreActions
@@ -62,6 +70,7 @@ const defaultState: StoreState = {
   gallery: {
     photos: [],
     selectedPhotos: [],
+    searchQuery: '',
     loading: false
   },
   timeline: {
@@ -75,20 +84,42 @@ const defaultState: StoreState = {
   ui: {
     theme: 'dark',
     sidebarOpen: true,
+    uploadModalOpen: false,
+    lightboxPhoto: null,
     modalOpen: false,
     activeRoute: '/gallery'
   }
 }
 
-const store = createStore(
+export const store = createStore(
   immer<Store>((set) => ({
     ...defaultState,
-    setUi: (updater) => set(updater),
-    setGallery: (updater) => set(updater),
-    setAuth: (updater) => set(updater),
-    setTimeline: (updater) => set(updater),
+    setUi: (updater) => set((state) => { updater(state as StoreState) }),
+    setGallery: (updater) => set((state) => { updater(state as StoreState) }),
+    setAuth: (updater) => set((state) => { updater(state as StoreState) }),
+    setTimeline: (updater) => set((state) => { updater(state as StoreState) }),
+    addPhoto: (photo) => set((state) => {
+      state.gallery.photos.unshift(photo)
+    }),
+    removePhoto: (photoId) => set((state) => {
+      state.gallery.photos = state.gallery.photos.filter(p => p.id !== photoId)
+    }),
+    setSearchQuery: (query) => set((state) => {
+      state.gallery.searchQuery = query
+    }),
+    togglePhotoSelection: (photoId) => set((state) => {
+      const index = state.gallery.selectedPhotos.indexOf(photoId)
+      if (index > -1) {
+        state.gallery.selectedPhotos.splice(index, 1)
+      } else {
+        state.gallery.selectedPhotos.push(photoId)
+      }
+    }),
+    resetStore: () => set(defaultState),
   }))
 )
+
+
 
 interface StoreProviderProps {
   children: React.ReactNode

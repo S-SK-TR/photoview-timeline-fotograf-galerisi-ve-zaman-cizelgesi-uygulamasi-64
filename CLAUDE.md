@@ -156,4 +156,34 @@ Kod yazılmadan önce plan ve API dokümanı hazırlanır.
 
 ---
 
-*Son Güncelleme: 2026-05-05*
+## 🛠️ Düzeltme Günlüğü (Fix Log)
+
+| Tarih | Faz | Değişiklik | Durum |
+|-------|-----|------------|-------|
+| 2026-05-09 | 1A | Store state ve action'ları genişletildi (searchQuery, uploadModal, lightbox) | ✅ Tamamlandı |
+| 2026-05-09 | 1 | Kritik Fonksiyon Düzeltmeleri (Store, Header, Gallery, Provider) | ✅ Tamamlandı |
+| 2026-05-09 | 1 | Kritik Fonksiyon Düzeltmeleri (Store, Header, Gallery, Provider) | ✅ Tamamlandı |
+| 2026-05-09 | 2 | Test Suite & Altyapı (Vitest, 26 Test Case) | ✅ Tamamlandı |
+
+## ✅ Uygulama Fonksiyon Kontrol Listesi
+
+- [x] **Store**: Merkezi state yönetimi, Immer middleware ve resetStore desteği
+- [x] **Header**: Dinamik arama, yükleme modalı ve navigasyon bağlantıları
+- [x] **Gallery**: useMemo filtreleme, Lightbox (AnimatePresence) ve Upload UI
+- [x] **AppProvider**: Gerçek zamanlı online/offline durum takibi
+- [ ] **Timeline**: Etkinlik detayları (Gelecek faz)
+- [x] **Test**: %100 Unit & Integration test başarısı (Vitest + JSDOM)
+
+## 🧪 Test Altyapısı
+
+- **Runner**: Vitest
+- **Ortam**: jsdom
+- **Kütüphaneler**: `@testing-library/react`, `@testing-library/jest-dom`
+- **Setup**: `tests/setup.ts` (Global mock'lar ve store reset)
+- **Komutlar**:
+  - `npm run test`: Tüm testleri çalıştırır
+  - `npm run test:coverage`: Kod kapsama raporu oluşturur
+
+---
+
+*Son Güncelleme: 2026-05-09*

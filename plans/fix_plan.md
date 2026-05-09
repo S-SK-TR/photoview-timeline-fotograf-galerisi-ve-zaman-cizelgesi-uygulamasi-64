@@ -7,47 +7,61 @@ Mevcut projeyi modern UI/UX, güçlü mimari ve tam PWA (Progressive Web App) de
 
 # 🏗️ Faz 1 — PWA & Core Altyapı
 ## 1.1 Progressive Web App (PWA)
-- [ ] **Manifest**: `public/manifest.json` yapılandırması (premium ikonlar, tema renkleri).
-- [ ] **Service Worker**: Vite PWA plugin ile çevrimdışı çalışma ve cache yönetimi.
-- [ ] **Installable**: Tarayıcıda "Uygulamayı Yükle" desteği ve mobil uyumluluk.
+- [x] **Manifest**: `vite.config.ts` PWA yapılandırması (ikonlar, tema renkleri).
+- [x] **Service Worker**: Vite PWA plugin ile otomatik güncelleme ve cache yönetimi.
+- [x] **Installable**: PWA desteği aktif hale getirildi.
 
 ## 1.2 Tasarım Sistemi (Design Tokens)
-- [ ] **Modern Typography**: Outfit (başlıklar) ve Inter (gövde) fontları.
-- [ ] **Color Palette**: HSL tabanlı, derinlik hissi veren dark/light mode renkleri.
-- [ ] **Tailwind Config**: Glassmorphism, glow efektleri ve custom shadow tanımları.
+- [x] **Modern Typography**: Outfit ve Inter entegrasyonu.
+- [x] **Color Palette**: Dark mode öncelikli premium renk paleti.
+- [x] **Tailwind Config**: Glassmorphism ve animasyon desteği.
 
 ---
 
 # 🎨 Faz 2 — Premium UI & UX (Visual Excellence)
 ## 2.1 Glassmorphism & Modern Layout
-- [ ] **AppShell**: Sayfa geçişlerini yöneten, gradient arka planlı ana iskelet.
-- [ ] **Navbar**: Blur efektli, şeffaf ve scroll duyarlı premium navigasyon.
-- [ ] **Reusable UI**: Button, Card ve Modal bileşenlerinin glassmorphism ile tasarımı.
+- [x] **AppShell**: Framer Motion geçişli ana iskelet.
+- [x] **Navbar**: Header ve Sidebar fonksiyonel bağlantıları tamamlandı.
+- [x] **Reusable UI**: Glassmorphism kartlar ve interaktif butonlar.
 
 ## 2.2 Dinamik Animasyonlar (Framer Motion)
-- [ ] **Page Transitions**: Sayfalar arası yumuşak slide ve fade efektleri.
-- [ ] **Micro-interactions**: Etkileşimli öğelerde (buton, input) dokunsal geri bildirim hissi veren animasyonlar.
-- [ ] **Staggered Entry**: Liste ve kartların sırayla ekrana gelme animasyonları.
+- [x] **Page Transitions**: Sayfalar arası yumuşak geçişler.
+- [x] **Micro-interactions**: Buton hover, active ve kart etkileşimleri.
+- [x] **Staggered Entry**: Galeri kartlarının sıralı yüklenme animasyonu.
 
 ---
 
 # 🧠 Faz 3 — Mimari & Performans
 ## 3.1 State Management (Zustand)
-- [ ] Uygulama genelinde merkezi state yönetimi.
-- [ ] LocalStorage persist desteği ile kullanıcı tercihlerinin korunması.
+- [x] **Merkezi State**: StoreProvider ile tüm uygulama durumu yönetiliyor.
+- [x] **Action Altyapısı**: Immer ile tip güvenli state güncellemeleri.
+- [ ] **LocalStorage Persist**: (Sıradaki adım).
 
 ## 3.2 Veri & Form Güvenliği
-- [ ] **Zod + React Hook Form**: Tip güvenli ve anlık doğrulamalı form yapısı.
-- [ ] **Sonner**: Premium toast bildirimleri ile kullanıcı geri bildirimi.
+- [x] **Arama & Filtreleme**: Store tabanlı dinamik galeri filtreleme.
+- [ ] **Zod + React Hook Form**: Form doğrulama entegrasyonu.
+- [x] **Lightbox**: Fotoğraf detay görünümü modalı.
 
 ---
 
 # 🧪 Faz 4 — Optimizasyon & SEO
-- [ ] **SEO Strategy**: Meta tags, OpenGraph (sosyal medya paylaşım) optimizasyonu.
-- [ ] **Performance**: Image lazy-loading ve component code-splitting.
-- [ ] **Accessibility**: Erişilebilirlik standartlarına (ARIA) tam uyum.
+- [x] **Performance**: Resim lazy-loading ve useMemo optimizasyonları.
+- [ ] **SEO Strategy**: Meta tags ve OpenGraph optimizasyonu.
+- [x] **Online Status**: AppProvider ile anlık bağlantı takibi.
 
 ---
 
-# 🔥 Öncelikli Adım: PWA + AppShell
-*Kullanıcının uygulamayı telefonuna indirebilmesi ve açtığında gördüğü o "premium cam" (glass) efekti, güven ve kalite algısını zirveye taşır.*
+# 🛡️ Faz 5 — Test & Kalite
+- [x] **Test Altyapısı**: Vitest + JSDOM kurulumu.
+- [x] **Unit Tests**: Store, Theme ve Core bileşen testleri.
+- [x] **Integration Tests**: Header, Sidebar ve GalleryView entegrasyon testleri.
+- [x] **State Isolation**: resetStore ile izole test ortamı.
+
+---
+
+# 🔥 Mevcut Durum: Proje "Premium" Standartlara Taşındı
+*Temel fonksiyonlar, modern UI ve güçlü test altyapısı tamamlandı. Bir sonraki odak noktası veri kalıcılığı (Persist) ve gerçek form yönetimi.*
+
+---
+
+*Son Güncelleme: 2026-05-09*

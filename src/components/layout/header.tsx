@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 import { Search, Bell, Upload, Moon, Sun } from 'lucide-react'
 import { useStore } from '@/core/providers/store-provider'
 import { useTheme } from '@/core/providers/theme-provider'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 const routeTitles: Record<string, string> = {
   '/gallery': 'Fotoğraf Galerisi',
@@ -13,10 +13,21 @@ const routeTitles: Record<string, string> = {
 }
 
 const Header = () => {
-  const { ui } = useStore()
+  const { gallery, setSearchQuery, setUi } = useStore()
   const { theme, setTheme } = useTheme()
   const location = useLocation()
+  const navigate = useNavigate()
   const pageTitle = routeTitles[location.pathname] ?? 'PhotoChronicle'
+
+  const handleUploadClick = () => {
+    setUi(state => {
+      state.ui.uploadModalOpen = true
+    })
+  }
+
+  const handleNotificationClick = () => {
+    alert('Henüz yeni bildirim yok.')
+  }
 
   return (
     <motion.header
@@ -35,6 +46,8 @@ const Header = () => {
           <input
             id="header-search"
             type="text"
+            value={gallery.searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Fotoğraf ara..."
             aria-label="Fotoğraf ara"
             className="bg-white/5 border border-white/10 rounded-xl px-4 py-2 pl-9 w-52 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/40 focus:border-blue-500/40 transition-all placeholder:text-white/30"
@@ -45,6 +58,7 @@ const Header = () => {
         {/* Upload */}
         <button
           id="header-upload-btn"
+          onClick={handleUploadClick}
           className="hidden sm:flex items-center gap-2 px-3 py-2 rounded-xl bg-blue-600/80 hover:bg-blue-600 text-white text-sm font-medium transition-all hover:scale-105 active:scale-95"
           aria-label="Fotoğraf yükle"
         >
@@ -65,6 +79,7 @@ const Header = () => {
         {/* Notifications */}
         <button
           id="header-notification-btn"
+          onClick={handleNotificationClick}
           className="p-2 rounded-xl hover:bg-white/10 transition-all relative"
           aria-label="Bildirimler"
         >
@@ -75,6 +90,7 @@ const Header = () => {
         {/* Avatar */}
         <button
           id="header-avatar-btn"
+          onClick={() => navigate('/settings')}
           className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-sm font-bold hover:scale-105 transition-transform"
           aria-label="Profil"
         >
