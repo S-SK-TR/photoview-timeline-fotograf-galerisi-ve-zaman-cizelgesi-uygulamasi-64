@@ -100,4 +100,7 @@ export function StoreProvider({ children }: StoreProviderProps) {
   return <StoreContext.Provider value={store}>{children}</StoreContext.Provider>
 }
 
-export const useStore = () => useZustandStore(StoreContext)
+export const useStore = () => {
+  const api = useContext(StoreContext)
+  return useZustandStore(api)
+}
