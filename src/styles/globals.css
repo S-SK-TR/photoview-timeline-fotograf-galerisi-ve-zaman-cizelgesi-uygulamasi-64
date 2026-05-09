@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 9%;
+    --foreground: 210 20% 98%;
+    --card: 0 0% 10%;
+    --card-foreground: 210 20% 98%;
+    --popover: 0 0% 9%;
+    --popover-foreground: 210 20% 98%;
+    --primary: 217 91% 60%;
+    --primary-foreground: 222 47% 11%;
+    --secondary: 220 14% 22%;
+    --secondary-foreground: 210 20% 98%;
+    --accent: 216 34% 17%;
+    --accent-foreground: 210 20% 98%;
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 210 20% 98%;
+    --border: 220 13% 15%;
+    --input: 220 13% 15%;
+    --ring: 217 91% 60%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 0 0% 9%;
+    --foreground: 210 20% 98%;
+    --card: 0 0% 10%;
+    --card-foreground: 210 20% 98%;
+    --popover: 0 0% 9%;
+    --popover-foreground: 210 20% 98%;
+    --primary: 217 91% 60%;
+    --primary-foreground: 222 47% 11%;
+    --secondary: 220 14% 22%;
+    --secondary-foreground: 210 20% 98%;
+    --accent: 216 34% 17%;
+    --accent-foreground: 210 20% 98%;
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 210 20% 98%;
+    --border: 220 13% 15%;
+    --input: 220 13% 15%;
+    --ring: 217 91% 60%;
+  }
+}
+
+@layer utilities {
+  .backdrop-blur-glass {
+    backdrop-filter: blur(10px);
+  }
+
+  .glass-card {
+    @apply bg-surface/50 backdrop-blur-glass border border-white/10 rounded-xl shadow-glass;
+  }
+
+  .glass-modal {
+    @apply bg-surface/50 backdrop-blur-glass border border-white/10 rounded-2xl shadow-glass-md;
+  }
+}
+
+/* Bento Grid Layout */
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 16px;
+}
+
+.bento-item {
+  aspect-ratio: var(--bento-aspect, 1/1);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.bento-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Micro-interactions */
+.btn-hover {
+  transition: transform 0.2s ease;
+}
+
+.btn-hover:hover {
+  transform: scale(1.02);
+}
+
+.btn-click {
+  transition: transform 0.1s ease;
+}
+
+.btn-click:active {
+  transform: scale(0.98);
+}
+
+.card-hover {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.image-hover {
+  transition: opacity 0.3s ease;
+}
+
+.image-hover:hover .image-overlay {
+  opacity: 1;
+}
+
+.tag-hover {
+  transition: all 0.2s ease;
+}
+
+.tag-hover:hover {
+  background-color: hsl(var(--primary));
+  transform: scale(1.05);
+}
