@@ -146,7 +146,7 @@ jobs:
 ```bash
 # .env.example
 NODE_ENV=development
-APP_NAME=[PROJECT_NAME]
+APP_NAME=PhotoView & Timeline: Fotoğraf Galerisi ve Zaman Çizelgesi Uygulaması
 APP_VERSION=0.1.0
 API_BASE_URL=http://localhost:3000/api
 LOG_LEVEL=debug

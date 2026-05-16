@@ -22,7 +22,7 @@ Sadece "çalışan" kod yeterli değildir. Proje şu üç sütun üzerine inşa 
 
 ### 2. Animasyon & Mikro-etkileşimler (Motion)
 - **Framer Motion**: Tüm önemli öğeler için `initial`, `animate` ve `transition` değerleri tanımlanmalı.
-- **Staggered Entry**: Listeler ve grid öğeleri ekrana sırayla, yumuşak bir yükselme efektiyle (`y: 20` -> `y: 0`) girmeli.
+- **Staggered Entry**: Listeler ve grid öğeleri ekrana sırayla, yumuşak bir yükselme efektiyle (`y: 20` → `y: 0`) girmeli.
 - **Hover Effects**: Butonlar ve kartlar hover durumunda `scale: 1.02` ve `shadow-xl` gibi tepkiler vermeli.
 
 ### 3. PWA & Mobil Uyumluluk
@@ -40,6 +40,37 @@ Sadece "çalışan" kod yeterli değildir. Proje şu üç sütun üzerine inşa 
 | **Köşeler** | `rounded-lg` (8px) | `rounded-2xl` (16px) veya `rounded-3xl` (24px) |
 | **Kenarlıklar** | `border-gray-200` | `border-white/20` veya `border-indigo-500/30` |
 | **Geçişler** | `transition-all` | `framer-motion` spring transition |
+| **Animasyon** | yoksa | staggered entry: y:20→y:0, opacity:0→1 |
+| **Hover** | yok | scale:1.02 + shadow-xl |
+
+---
+
+## 🚨 Kritik Fonksiyon Kontrolleri (Runtime Hata Önleyici)
+
+| # | Kontrol | Önem |
+|---|---------|------|
+| ☐ | `AppShell`'de `<Routes>` ve tüm feature route'ları var mı? | 🔴 Kritik |
+| ☐ | Zustand action'ları (`setUi`, `setGallery` vb.) tanımlanmış mı? | 🔴 Kritik |
+| ☐ | `useStore` hook'u `useContext → useZustandStore` zinciriyle mi? | 🔴 Kritik |
+| ☐ | Sidebar menüleri `<NavLink>` kullanıyor mu? | 🔴 Kritik |
+| ☐ | `tsconfig.json`'da `baseUrl` ve `paths` var mı? | 🟡 Önemli |
+| ☐ | PWA ikon dosyaları fiziksel olarak mevcut mu? | 🟡 Önemli |
+| ☐ | Çift `@tailwind base` direktifi var mı? | 🟡 Önemli |
+| ☐ | Feature sayfaları empty state yönetiyor mu? | 🟡 Önemli |
+| ☐ | `PhotoView & Timeline: Fotoğraf Galerisi ve Zaman Çizelgesi Uygulaması` placeholder kalmış mı? | 🟠 Orta |
+| ☐ | Store'da `Date` nesnesi yerine ISO string mi? | 🟠 Orta |
+
+---
+
+## 🧪 Test Altyapısı Standardı
+
+- **Runner**: Vitest
+- **Ortam**: jsdom
+- **Kütüphaneler**: `@testing-library/react`, `@testing-library/jest-dom`
+- **Setup**: `tests/setup.ts` (Global mock'lar ve store reset)
+- **Komutlar**:
+  - `npm run test`: Tüm testleri çalıştırır
+  - `npm run test:coverage`: Kod kapsama raporu oluşturur
 
 ---
 
@@ -49,3 +80,4 @@ Bir projeyi incelerken veya kodlarken:
 2. Mevcut kodun bu standartların neresinde olduğunu puanla (0-100).
 3. Eksik olan her maddeyi projenin bir sonraki iterasyonunda ("fix" veya "visual_enhancer" turu) mutlaka koda uygula.
 4. **Asla placeholders (lorem ipsum) kullanma**; gerçekçi SaaS içerikleri üret.
+5. AppShell'deki `<Routes>` bloğunu ve NavLink bileşenlerini asla bozma.

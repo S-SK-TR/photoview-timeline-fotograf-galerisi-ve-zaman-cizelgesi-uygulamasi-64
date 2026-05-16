@@ -19,7 +19,7 @@ export const HTTP_STATUS = {
  * Uygulama sabit değerleri
  */
 export const APP = {
-    NAME: '[PROJECT_NAME]',
+    NAME: 'PhotoView & Timeline: Fotoğraf Galerisi ve Zaman Çizelgesi Uygulaması',
     VERSION: '0.1.0',
     DEFAULT_LOCALE: 'tr-TR',
     DEFAULT_PAGE_SIZE: 20,

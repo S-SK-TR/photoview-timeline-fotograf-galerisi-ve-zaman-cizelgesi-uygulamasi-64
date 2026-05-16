@@ -1,9 +1,21 @@
+// ============================================
+// Core Module - Application Bootstrap
+// ============================================
+// Bu dosya uygulamanın temel başlatma mantığını içerir.
+// Proje başladığında bu dosyayı gerçek bootstrap koduyla değiştirin.
+
+/**
+ * Uygulama konfigürasyonu
+ */
 export const config = {
-  appName: 'PhotoChronicle',
+  appName: 'PhotoView & Timeline: Fotoğraf Galerisi ve Zaman Çizelgesi Uygulaması',
   version: '0.1.0',
-  environment: (typeof process !== 'undefined' && process.env?.NODE_ENV) || 'development',
+  environment: process.env.NODE_ENV || 'development',
 };
 
+/**
+ * Uygulamayı başlatır
+ */
 export function bootstrap() {
   console.log(`${config.appName} v${config.version} starting...`);
   console.log(`Environment: ${config.environment}`);

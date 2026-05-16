@@ -1,6 +1,6 @@
-# 🚀 [PROJECT_NAME]
+# 🚀 PhotoView & Timeline: Fotoğraf Galerisi ve Zaman Çizelgesi Uygulaması
 
-> **[PROJECT_DESCRIPTION]**
+> **PhotoView & Timeline: Fotoğraf Galerisi ve Zaman Çizelgesi Uygulaması — Premium SaaS Uygulaması**
 
 ![Version](https://img.shields.io/badge/version-0.1.0-blue)
 ![Status](https://img.shields.io/badge/status-development-orange)
@@ -58,7 +58,7 @@ npm --version   # >= 9.x
 ```bash
 # Repoyu klonla
 git clone [REPO_URL]
-cd [PROJECT_NAME]
+cd PhotoView & Timeline: Fotoğraf Galerisi ve Zaman Çizelgesi Uygulaması
 
 # Bağımlılıkları yükle
 npm install

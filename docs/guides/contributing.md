@@ -15,7 +15,7 @@
 ```bash
 # Fork'u klonla
 git clone [YOUR_FORK_URL]
-cd [PROJECT_NAME]
+cd PhotoView & Timeline: Fotoğraf Galerisi ve Zaman Çizelgesi Uygulaması
 
 # Upstream ekle
 git remote add upstream [ORIGINAL_REPO_URL]

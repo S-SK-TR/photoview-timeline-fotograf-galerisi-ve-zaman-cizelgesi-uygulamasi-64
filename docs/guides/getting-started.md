@@ -22,7 +22,7 @@ Başlamadan önce aşağıdaki araçların kurulu olduğundan emin olun:
 
 ```bash
 git clone [REPO_URL]
-cd [PROJECT_NAME]
+cd PhotoView & Timeline: Fotoğraf Galerisi ve Zaman Çizelgesi Uygulaması
 ```
 
 ### 2. Bağımlılıkları Yükle

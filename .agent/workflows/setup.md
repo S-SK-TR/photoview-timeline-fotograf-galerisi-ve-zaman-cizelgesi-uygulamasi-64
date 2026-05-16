@@ -9,7 +9,7 @@ Bu workflow yeni bir projeyi template'den klonladıktan sonra ilk kurulumu yapar
 ## Adımlar
 
 ### 1. Template Placeholder'larını Güncelle
-- `CLAUDE.md` dosyasındaki `[PROJECT_NAME]`, `[PROJECT_DESCRIPTION]`, `[TECH_STACK]` gibi alanları gerçek değerlerle değiştir
+- `CLAUDE.md` dosyasındaki `PhotoView & Timeline: Fotoğraf Galerisi ve Zaman Çizelgesi Uygulaması`, `PhotoView & Timeline: Fotoğraf Galerisi ve Zaman Çizelgesi Uygulaması — Premium SaaS Uygulaması`, `[TECH_STACK]` gibi alanları gerçek değerlerle değiştir
 - `README.md` dosyasındaki placeholder'ları güncelle
 - `package.json` oluştur (eğer yoksa)
 

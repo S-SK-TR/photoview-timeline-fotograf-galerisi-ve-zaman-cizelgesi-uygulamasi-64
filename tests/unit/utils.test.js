@@ -1,5 +1,8 @@
-import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
-import { isEmpty, generateId, debounce } from '../../src/shared/utils/index.js';
+// ============================================
+// Unit Test Example
+// ============================================
+
+import { isEmpty, formatDate, generateId, debounce } from '../../src/shared/utils/index.js';
 
 describe('Shared Utils', () => {
     describe('isEmpty()', () => {
@@ -40,36 +43,36 @@ describe('Shared Utils', () => {
 
     describe('debounce()', () => {
         beforeEach(() => {
-            vi.useFakeTimers();
+            jest.useFakeTimers();
         });
 
         afterEach(() => {
-            vi.useRealTimers();
+            jest.useRealTimers();
         });
 
         it('should delay function execution', () => {
-            const fn = vi.fn();
+            const fn = jest.fn();
             const debouncedFn = debounce(fn, 300);
 
             debouncedFn();
             expect(fn).not.toHaveBeenCalled();
 
-            vi.advanceTimersByTime(300);
+            jest.advanceTimersByTime(300);
             expect(fn).toHaveBeenCalledTimes(1);
         });
 
         it('should reset timer on subsequent calls', () => {
-            const fn = vi.fn();
+            const fn = jest.fn();
             const debouncedFn = debounce(fn, 300);
 
             debouncedFn();
-            vi.advanceTimersByTime(200);
+            jest.advanceTimersByTime(200);
             debouncedFn();
-            vi.advanceTimersByTime(200);
+            jest.advanceTimersByTime(200);
 
             expect(fn).not.toHaveBeenCalled();
 
-            vi.advanceTimersByTime(100);
+            jest.advanceTimersByTime(100);
             expect(fn).toHaveBeenCalledTimes(1);
         });
     });
