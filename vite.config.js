@@ -2,20 +2,10 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { VitePWA } from 'vite-plugin-pwa';
 
-const sentryVitePlugin = {
-  name: 'sentry-vite-plugin',
-  config: () => ({
-    build: {
-      sourcemap: true
-    }
-  })
-};
-
 export default defineConfig({
   resolve: { alias: { '@': '/src' } },
   plugins: [
     react(),
-    sentryVitePlugin,
     VitePWA({
       registerType: 'autoUpdate',
       includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'mask-icon.svg'],
@@ -31,12 +21,4 @@ export default defineConfig({
       }
     })
   ],
-  test: {
-    globals: true,
-    environment: 'jsdom',
-    setupFiles: './tests/setup.ts',
-    coverage: {
-      reporter: ['text', 'json', 'html']
-    }
-  }
 });

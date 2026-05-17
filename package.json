@@ -12,7 +12,8 @@
     "@sentry/react": "^7.100.0",
     "@testing-library/react": "^14.0.0",
     "@testing-library/jest-dom": "^6.0.0",
-    "jsdom": "^23.0.0"
+    "jsdom": "^23.0.0",
+    "react-dropzone": "^14.2.3"
   },
   "devDependencies": {
     "vite": "^5.0.0",

@@ -2,6 +2,7 @@ import { useMemo } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useStore } from '@/core/providers/store-provider'
 import { Image as ImageIcon, Tag, Calendar, Plus, Search, X } from 'lucide-react'
+import { DragDropUpload } from '@/components/ui/DragDropUpload'
 
 // Demo photos for empty state demonstration
 const demoPhotos = [
@@ -186,43 +187,9 @@ const GalleryView = () => {
         )}
       </AnimatePresence>
 
-      {/* Upload Modal (Placeholder UI) */}
+      {/* Upload Modal */}
       <AnimatePresence>
-        {ui.uploadModalOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm"
-            onClick={() => setUi(state => { state.ui.uploadModalOpen = false })}
-          >
-            <motion.div
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              exit={{ y: 20, opacity: 0 }}
-              className="bg-surface border border-white/10 p-6 rounded-2xl max-w-md w-full shadow-2xl"
-              onClick={e => e.stopPropagation()}
-            >
-              <div className="flex justify-between items-center mb-6">
-                <h3 className="text-xl font-bold font-display">Fotoğraf Yükle</h3>
-                <button onClick={() => setUi(state => { state.ui.uploadModalOpen = false })}><X size={20} className="text-white/40 hover:text-white" /></button>
-              </div>
-              <div className="border-2 border-dashed border-white/10 rounded-xl p-12 flex flex-col items-center justify-center gap-4 cursor-pointer hover:bg-white/5 transition-all">
-                <div className="w-12 h-12 bg-blue-500/20 rounded-full flex items-center justify-center">
-                  <Plus className="text-blue-400" />
-                </div>
-                <div className="text-center">
-                  <p className="font-medium">Fotoğrafları buraya sürükleyin</p>
-                  <p className="text-xs text-white/30 mt-1">Veya tıklayarak dosya seçin</p>
-                </div>
-              </div>
-              <div className="flex justify-end gap-3 mt-6">
-                <button className="px-4 py-2 rounded-xl text-sm font-medium hover:bg-white/5 transition-colors" onClick={() => setUi(state => { state.ui.uploadModalOpen = false })}>Vazgeç</button>
-                <button className="px-4 py-2 rounded-xl text-sm font-medium bg-blue-600 hover:bg-blue-500 transition-colors">Devam Et</button>
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
+        {ui.uploadModalOpen && <DragDropUpload />}
       </AnimatePresence>
     </div>
   )
